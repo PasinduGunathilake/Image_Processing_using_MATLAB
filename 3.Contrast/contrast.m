@@ -1,4 +1,4 @@
-function c = contrast(I,factor)
+function C = contrast(I,factor)
 if length(size(I)) == 3
     I = rgb2gray(I);
 end
@@ -8,7 +8,7 @@ end
 for i = 1:r
     for j = 1:c
         a = I(i,j);
-        
+
         a = a*factor;
 
         if (a> 255)
@@ -19,5 +19,5 @@ for i = 1:r
         I(i,j)=a;
     end
 end
-c = I;
+C = I;
 end
