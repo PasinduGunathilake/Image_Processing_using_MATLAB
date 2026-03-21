@@ -1,0 +1,24 @@
+function I = autoContrast(I)
+
+if length(size(I)) == 3
+    I = rgb2gray(I);
+end
+
+I = double(I);
+
+amin = 0;
+amax = 255;
+alow = min(min(I));
+ahigh = max(max(I));
+
+[r,c] = size(I);
+
+for i = 1:r
+    for j = 1:c
+        a = I(i,j);
+        I(i,j) = amin + ((a-alow)*(amax-amin))/(ahigh-alow);
+    end
+end
+
+I = uint8(I);
+end
